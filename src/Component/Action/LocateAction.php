@@ -7,7 +7,7 @@ namespace App\Component\Action;
 use App\Component\Actor\ActorInterface;
 use App\Component\Place\PlaceInterface;
 
-class LocateAction
+class LocateAction implements ActionInterface
 {
     public function locateActor(ActorInterface $actor, PlaceInterface $place)
     {

@@ -6,6 +6,7 @@ use App\Component\Action\LocateAction;
 use App\Component\Actor\Character;
 use App\Component\Output\Output;
 use App\Component\Place\Town;
+use App\Component\Scenario\Scenario;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,7 +16,7 @@ class DefaultController extends AbstractController
     /**
      * @Route("/", name="demo")
      */
-    public function index(): Response
+    public function objective1(): Response
     {
         $alban = new Character('Alban', 'Barius');
         $paris = new Town('Paris');
@@ -38,5 +39,15 @@ class DefaultController extends AbstractController
             'message' => 'Welcome to your new controller!',
             'path' => 'src/Controller/DefaultController.php',
         ]);
+    }
+    /**
+     * @Route("/", name="demo")
+     */
+    public function cristo(): Response
+    {
+        $scenario = new Scenario();
+
+        //"Le 24 février 1815, la vigie de Notre-Dame de la Garde signala le trois-mâts le Pharaon, venant de Smyrne, Trieste et Naples."
+
     }
 }
