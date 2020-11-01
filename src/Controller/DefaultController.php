@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Component\Action\Action;
-use App\Component\Action\LocateAction;
 use App\Component\Context\Context;
 use App\Component\Output\Output;
 use App\Component\Place\Place;
@@ -18,33 +17,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends AbstractController
 {
-    /**
-     * @Route("/", name="demo")
-     */
-    public function objective1(): Response
-    {
-        $barius = new Character('Barius');
-        $paris = new Town('Paris');
-        $berlin = new Town('Berlin');
-        $barcelone = new Town('Barcelone');
-
-        $locate = new LocateAction();
-        $action1 = $locate->locateActor($barius, $paris);
-        $action2 = $locate->locateActor($barius, $berlin);
-        $action3 = $locate->locateActor($barius, $barcelone);
-
-        $output = new Output($action1);
-        $output->addContent($action2);
-        $output->addContent($action3);
-
-        dd($output);
-        // todo transform logs into the stori language
-
-        return $this->json([
-            'message' => 'Welcome to your new controller!',
-            'path' => 'src/Controller/DefaultController.php',
-        ]);
-    }
     /**
      * @Route("/cristo", name="monte-cristo")
      */
@@ -74,12 +46,55 @@ class DefaultController extends AbstractController
 
 
         // Comme d’habitude, un pilote côtier partit aussitôt du port, rasa le château d’If, et alla aborder le navire entre le cap de Morgion et l’île de Rion.
+        $scene = new Scene();
+
         $character = new Character('pilote côtier');
         $port = new Place('port');
         $castle = new Place("château d'if");
 
+        $action1 = new Action('go');
+        $action1->addSource($character);
+        $action1->addDestination($port);
+        $scene->addAction($action1);
 
+        $action2 = new Action('go');
+        $action2->addSource($character);
+        $action2->addDestination($castle);
+        $scene->addAction($action2);
+
+        $action3 = new Action('go');
+        $action3->addSource($character);
+        $action3->addTarget($pharaon);
+        $positionBoat = new Place('entre le cap de Morgion et l’île de Rion');
+        $action3->addDestination($positionBoat);
+        $scene->addAction($action3);
+
+        $scenario->addScene($scene);
+
+        // scene 3 = Aussitôt, comme d’habitude encore, la plate-forme du fort Saint-Jean s’était couverte de curieux ; car c’est toujours une grande affaire à Marseille que l’arrivée d’un bâtiment, surtout quand ce bâtiment, comme le Pharaon, a été construit, gréé, arrimé sur les chantiers de la vieille Phocée, et appartient à un armateur de la ville.
+        $scene = new Scene();
+
+        $platform = new Place('plate-forme du fort Saint-Jean');
+        $crow = new Character('curieux');
+        $action = new Action('go');
+        $action->addSource($crow);
+        $action->addDestination($platform);
+        $scene->addAction($action);
+
+        $scenario->addScene($scene);
+
+        // scene 4 : Cependant ce bâtiment s’avançait
+
+        // scene 5 : il avait heureusement franchi le détroit que quelque secousse volcanique a creusé entre l’île de Calasareigne et l’île de Jaros ; il avait doublé Pomègue, et il s’avançait sous ses trois huniers, son grand foc et sa brigantine, mais si lentement et d’une allure si triste, que les curieux, avec cet instinct qui pressent un malheur, se demandaient quel accident pouvait être arrivé à bord.
+
+        // scene 6 : Néanmoins les experts en navigation reconnaissaient que si un accident était arrivé, ce ne pouvait être au bâtiment lui-même ;
+
+        // car il s’avançait dans toutes les conditions d’un navire parfaitement gouverné : son ancre était en mouillage, ses haubans de beaupré décrochés ; et près du pilote, qui s’apprêtait à diriger le Pharaon par l’étroite entrée du port de Marseille, était un jeune homme au geste rapide et à l’œil actif, qui surveillait chaque mouvement du navire et répétait chaque ordre du pilote.
+
+        // La vague inquiétude qui planait sur la foule avait particulièrement atteint un des spectateurs de l’esplanade de Saint-Jean, de sorte qu’il ne put attendre l’entrée du bâtiment dans le port ; il sauta dans une petite barque et ordonna de ramer au-devant du Pharaon, qu’il atteignit en face de l’anse de la Réserve.
 
         dd($scenario);
     }
+
+    //todo : test with madame Bovary
 }

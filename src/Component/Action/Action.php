@@ -6,6 +6,7 @@ declare(strict_types=1);
 namespace App\Component\Action;
 
 
+use App\Component\Place\PlaceInterface;
 use App\Component\Subject\SubjectInterface;
 
 class Action
@@ -13,6 +14,7 @@ class Action
     private string $title;
     private array $sources;
     private array $target;
+    private array $destination;
 
     public function __construct(string $title)
     {
@@ -75,6 +77,11 @@ class Action
     public function addTarget(SubjectInterface $target)
     {
         $this->target[] = $target;
+    }
+
+    public function addDestination(PlaceInterface $destination)
+    {
+        $this->destination[] = $destination;
     }
 
 }
