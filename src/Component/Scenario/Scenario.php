@@ -4,25 +4,31 @@ declare(strict_types=1);
 
 namespace App\Component\Scenario;
 
-use App\Component\Action\ActionInterface;
+use App\Component\Scene\Scene;
 
 class Scenario
 {
-    private array $actions;
+    private string $title;
+    private array $scenes;
 
     /**
-     * @return array
+     * @return string
      */
-    public function getActions(): array
+    public function getTitle(): string
     {
-        return $this->actions;
+        return $this->title;
     }
 
     /**
-     * @param array $actions
+     * @param string $title
      */
-    public function setActions(array $actions): void
+    public function setTitle(string $title): void
     {
-        $this->actions = $actions;
+        $this->title = $title;
+    }
+
+    public function addScene(Scene $scene)
+    {
+        $this->scenes[] = $scene;
     }
 }

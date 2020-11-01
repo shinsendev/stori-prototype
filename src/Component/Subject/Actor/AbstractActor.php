@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Component\Subject\Actor;
 
-abstract class AbstractActor implements ActorInterface
+use App\Component\Subject\SubjectAbstract;
+
+abstract class AbstractActor extends SubjectAbstract implements ActorInterface
 {
-    protected $id;
+
 }

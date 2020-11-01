@@ -6,34 +6,12 @@ namespace App\Component\Subject\Actor;
 
 class Character extends AbstractActor
 {
-    protected string $firstname;
-    protected string $lastname;
-    protected string $gender;
+    protected string $name;
+    protected ?string $gender;
 
-    public function __construct(string $firstname, string $lastname)
+    public function __construct(string $name, ?string $gender = null)
     {
-        $this->firstname = $firstname;
-        $this->lastname = $lastname;
-    }
-
-    public function getFullName()
-    {
-        return $this->firstname . ' ' . $this->lastname;
-    }
-
-    /**
-     * @return string
-     */
-    public function getGender(): string
-    {
-        return $this->gender;
-    }
-
-    /**
-     * @param string $gender
-     */
-    public function setGender(string $gender): void
-    {
+        $this->name = $name;
         $this->gender = $gender;
     }
 }
