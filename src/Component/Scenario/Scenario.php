@@ -31,4 +31,12 @@ class Scenario
     {
         $this->scenes[] = $scene;
     }
+
+    /**
+     * @return array
+     */
+    public function getScenes(): array
+    {
+        return $this->scenes;
+    }
 }

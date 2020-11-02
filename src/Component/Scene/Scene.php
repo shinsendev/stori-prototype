@@ -19,4 +19,13 @@ class Scene
             $this->context = $context;
         }
     }
+
+    /**
+     * @return array
+     */
+    public function getActions(): array
+    {
+        return $this->actions;
+    }
+
 }

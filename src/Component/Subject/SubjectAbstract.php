@@ -12,4 +12,9 @@ abstract class SubjectAbstract implements SubjectInterface
     {
         $this->name = $name;
     }
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
 }

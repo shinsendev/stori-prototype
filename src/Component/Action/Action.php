@@ -12,34 +12,25 @@ use App\Component\Subject\SubjectInterface;
 class Action
 {
     private string $title;
-    private array $sources;
-    private array $target;
-    private array $destination;
+    private array $sources = [];
+    private array $targets = [];
+    private array $destinations = [];
 
     public function __construct(string $title)
     {
         $this->title = $title;
     }
 
-    /**
-     * @return string
-     */
     public function getTitle(): string
     {
         return $this->title;
     }
 
-    /**
-     * @param string $title
-     */
     public function setTitle(string $title): void
     {
         $this->title = $title;
     }
 
-    /**
-     * @return array
-     */
     public function getSources(): array
     {
         return $this->sources;
@@ -50,38 +41,34 @@ class Action
         $this->sources[] = $source;
     }
 
-    /**
-     * @param array $sources
-     */
     public function setSources(array $sources): void
     {
         $this->sources = $sources;
     }
 
-    /**
-     * @return array
-     */
-    public function getTarget(): array
+    public function getTargets(): array
     {
-        return $this->target;
+        return $this->targets;
     }
 
-    /**
-     * @param array $target
-     */
-    public function setTarget(array $target): void
+    public function setTargets(array $targets): void
     {
-        $this->target = $target;
+        $this->targets = $targets;
     }
 
     public function addTarget(SubjectInterface $target)
     {
-        $this->target[] = $target;
+        $this->targets[] = $target;
+    }
+
+    public function getDestinations(): array
+    {
+        return $this->destinations;
     }
 
     public function addDestination(PlaceInterface $destination)
     {
-        $this->destination[] = $destination;
+        $this->destinations[] = $destination;
     }
 
 }

@@ -4,13 +4,12 @@ namespace App\Controller;
 
 use App\Component\Action\Action;
 use App\Component\Context\Context;
-use App\Component\Output\Output;
 use App\Component\Place\Place;
-use App\Component\Place\Town;
 use App\Component\Scenario\Scenario;
 use App\Component\Scene\Scene;
 use App\Component\Subject\Actor\Character;
 use App\Component\Subject\Object\Boat;
+use App\Scribo\Scribo;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -93,7 +92,9 @@ class DefaultController extends AbstractController
 
         // La vague inquiétude qui planait sur la foule avait particulièrement atteint un des spectateurs de l’esplanade de Saint-Jean, de sorte qu’il ne put attendre l’entrée du bâtiment dans le port ; il sauta dans une petite barque et ordonna de ramer au-devant du Pharaon, qu’il atteignit en face de l’anse de la Réserve.
 
-        dd($scenario);
+
+        $result = (new Scribo())->convertScenario($scenario);
+        return new Response($result);
     }
 
     //todo : test with madame Bovary

@@ -14,4 +14,13 @@ class Character extends AbstractActor
         $this->name = $name;
         $this->gender = $gender;
     }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
 }
